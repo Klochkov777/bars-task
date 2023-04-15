@@ -16,8 +16,12 @@ public abstract class AbstractDao<T> {
     public void create(T entity) {
         try(Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
+            System.out.println("begin trans");
+            System.out.println(entity.toString());
             session.persist(entity);
+            System.out.println("finish persist");
             transaction.commit();
+            System.out.println("finishTrans");
         } catch (Exception e) {
             e.getStackTrace();
         }

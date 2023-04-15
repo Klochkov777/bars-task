@@ -35,6 +35,20 @@ public class KindMaterialDAO extends AbstractDao<KindMaterialEntity> {
         return result;
     }
 
+    public List<KindMaterialEntity> getAllKindsMaterial() {
+        List<KindMaterialEntity> result = null;
+        try(Session session = sessionFactory.getCurrentSession()) {
+            Transaction transaction = session.beginTransaction();
+            Query<KindMaterialEntity> query = session.createQuery("select e.name from KindMaterialEntity e", KindMaterialEntity.class);
+            result = query.getResultList();
+            transaction.commit();
+            return result;
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+        return result;
+    }
+
     public KindMaterialEntity readByName(String nameMaterial) {
         KindMaterialEntity kindMaterial = null;
         try (Session session = sessionFactory.getCurrentSession()) {

@@ -27,7 +27,7 @@
         </property>
 
         <property name = "hbm2ddl.auto">
-            create-drop
+            create
         </property>
 
         <property name = "use_sql_comments">
@@ -56,8 +56,8 @@
 <!--        <mapping class="priv.klochkov.constructionwork.entity.EmailEntity"/>-->
         <mapping class="priv.klochkov.constructionwork.entity.KindMaterialEntity"/>
 <!--        <mapping class="priv.klochkov.constructionwork.entity.KindWorkEntity"/>-->
-<!--        <mapping class="priv.klochkov.constructionwork.entity.MaterialEntity"/>-->
-<!--        <mapping class="priv.klochkov.constructionwork.entity.OrderEntity"/>-->
+        <mapping class="priv.klochkov.constructionwork.entity.MaterialEntity"/>
+        <mapping class="priv.klochkov.constructionwork.entity.OrderEntity"/>
 <!--        <mapping class="priv.klochkov.constructionwork.entity.UserEntity"/>-->
 <!--        <mapping class="priv.klochkov.constructionwork.entity.WorkEntity"/>-->
 
