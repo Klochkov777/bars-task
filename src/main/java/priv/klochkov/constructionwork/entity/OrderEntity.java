@@ -47,11 +47,12 @@ public class OrderEntity {
 //    @JoinColumn(name = "address_id")
 //    private AddressEntity address;
 
-//    @OneToMany(mappedBy = "order", cascade = {CascadeType.ALL}, orphanRemoval = true)
-//    private List<WorkEntity> works = new ArrayList<WorkEntity>();
-//
+    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @JoinColumn(name = "order_id")
+    private List<WorkEntity> works = new ArrayList<WorkEntity>();
 
-    @OneToMany(cascade = {CascadeType.ALL}) //!!!!!!!!!!!!!!!!!
+
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "order_id")
     private List<MaterialEntity> materials = new ArrayList<>();
 }

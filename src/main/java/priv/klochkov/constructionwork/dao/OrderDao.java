@@ -1,15 +1,8 @@
 package priv.klochkov.constructionwork.dao;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-import priv.klochkov.constructionwork.entity.KindMaterialEntity;
-import priv.klochkov.constructionwork.entity.MaterialEntity;
 import priv.klochkov.constructionwork.entity.OrderEntity;
 import priv.klochkov.constructionwork.sevice.utils.MySessionFactory;
-
-import java.util.List;
 
 
 public class OrderDao extends AbstractDao<OrderEntity>{

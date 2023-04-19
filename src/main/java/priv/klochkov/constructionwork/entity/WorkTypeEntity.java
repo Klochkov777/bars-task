@@ -7,19 +7,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@Entity
-//@Table(name = "kind_of_work")
-public class KindWorkEntity {
+@Entity
+@Table(name = "types_of_work")
+public class WorkTypeEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name", unique = true)
@@ -31,6 +29,5 @@ public class KindWorkEntity {
     @JoinColumn(name = "cost")
     private BigDecimal cost;
 
-//    @OneToMany(mappedBy = "kindWork", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-//    List<WorkEntity> works = new ArrayList<WorkEntity>();
+
 }

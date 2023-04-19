@@ -6,25 +6,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@Entity
-//@Table(name = "works")
+@Entity
+@Table(name = "works")
 public class WorkEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long amount;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "order_id")
-    private OrderEntity order;
-
     @ManyToOne
     @JoinColumn(name = "kind_work_id")
-    private KindWorkEntity kindWork;
+    private WorkTypeEntity kindWork;
 }

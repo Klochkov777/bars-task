@@ -1,31 +1,28 @@
 package priv.klochkov.constructionwork.dao;
 
-import jakarta.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import priv.klochkov.constructionwork.entity.KindMaterialEntity;
-import priv.klochkov.constructionwork.entity.MaterialEntity;
+import priv.klochkov.constructionwork.entity.MaterialTypeEntity;
 import priv.klochkov.constructionwork.sevice.utils.MySessionFactory;
 
-import java.math.BigDecimal;
 import java.util.List;
 
-public class KindMaterialDAO extends AbstractDao<KindMaterialEntity> {
+public class MaterialTypeDao extends AbstractDao<MaterialTypeEntity> {
 
     private final SessionFactory sessionFactory = MySessionFactory.getSessionFactory();
 
-    public KindMaterialDAO() {
-        super(KindMaterialEntity.class);
+    public MaterialTypeDao() {
+        super(MaterialTypeEntity.class);
     }
 
 
-    public List<String> getAllNamesKindsMaterial() {
+    public List<String> getAllNamesTypesMaterial() {
         List<String> result = null;
         try(Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
-            Query<String> query = session.createQuery("select e.name from KindMaterialEntity e", String.class);
+            Query<String> query = session.createQuery("select e.name from MaterialTypeEntity e", String.class);
             result = query.getResultList();
             transaction.commit();
             return result;
@@ -35,11 +32,11 @@ public class KindMaterialDAO extends AbstractDao<KindMaterialEntity> {
         return result;
     }
 
-    public List<KindMaterialEntity> getAllKindsMaterial() {
-        List<KindMaterialEntity> result = null;
+    public List<MaterialTypeEntity> getAllTypesMaterial() {
+        List<MaterialTypeEntity> result = null;
         try(Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
-            Query<KindMaterialEntity> query = session.createQuery("select e.name from KindMaterialEntity e", KindMaterialEntity.class);
+            Query<MaterialTypeEntity> query = session.createQuery("select e.name from MaterialTypeEntity e", MaterialTypeEntity.class);
             result = query.getResultList();
             transaction.commit();
             return result;
@@ -49,12 +46,12 @@ public class KindMaterialDAO extends AbstractDao<KindMaterialEntity> {
         return result;
     }
 
-    public KindMaterialEntity readByName(String nameMaterial) {
-        KindMaterialEntity kindMaterial = null;
+    public MaterialTypeEntity readByName(String nameMaterial) {
+        MaterialTypeEntity kindMaterial = null;
         try (Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
-            Query<KindMaterialEntity> query =
-                    session.createQuery("from KindMaterialEntity k where k.name = :nameMaterial", KindMaterialEntity.class);
+            Query<MaterialTypeEntity> query =
+                    session.createQuery("from MaterialTypeEntity k where k.name = :nameMaterial", MaterialTypeEntity.class);
             query.setParameter("nameMaterial", nameMaterial);
             kindMaterial = query.getSingleResult();
             transaction.commit();

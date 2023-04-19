@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 
 
 @AllArgsConstructor
@@ -15,8 +12,8 @@ import java.util.List;
 @Setter
 @Builder
 @Entity
-@Table(name = "kind_of_Material")
-public class KindMaterialEntity {
+@Table(name = "types_of_Material")
+public class MaterialTypeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

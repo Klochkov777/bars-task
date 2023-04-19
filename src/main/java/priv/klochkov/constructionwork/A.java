@@ -1,20 +1,11 @@
 package priv.klochkov.constructionwork;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
-import jakarta.persistence.Entity;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import priv.klochkov.constructionwork.dao.KindMaterialDAO;
-import priv.klochkov.constructionwork.dao.MaterialDao;
+import priv.klochkov.constructionwork.dao.MaterialTypeDao;
 import priv.klochkov.constructionwork.dao.OrderDao;
-import priv.klochkov.constructionwork.entity.KindMaterialEntity;
-import priv.klochkov.constructionwork.entity.MaterialEntity;
-import priv.klochkov.constructionwork.entity.OrderEntity;
-import priv.klochkov.constructionwork.sevice.utils.MySessionFactory;
+import priv.klochkov.constructionwork.dao.WorkTypeDao;
+import priv.klochkov.constructionwork.entity.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 public class A {
@@ -22,52 +13,73 @@ public class A {
 
         //create
 
-        KindMaterialDAO kindMaterialDAO = new KindMaterialDAO();
-        KindMaterialEntity kindMaterial1 = new KindMaterialEntity();
-        kindMaterial1.setName("board");
-        kindMaterial1.setUnit("M2");
-        kindMaterial1.setCost(new BigDecimal("100"));
-        kindMaterialDAO.create(kindMaterial1);
+        MaterialTypeDao materialTypeDAO = new MaterialTypeDao();
+        MaterialTypeEntity typeMaterial1 = new MaterialTypeEntity();
+        typeMaterial1.setName("board");
+        typeMaterial1.setUnit("M2");
+        typeMaterial1.setCost(new BigDecimal("100"));
+        materialTypeDAO.create(typeMaterial1);
 
 
-        KindMaterialEntity kindMaterial2 = new KindMaterialEntity();
-        kindMaterial2.setName("stone");
-        kindMaterial2.setUnit("M3");
-        kindMaterial2.setCost(new BigDecimal("300"));
-        kindMaterialDAO.create(kindMaterial2);
+        MaterialTypeEntity typeMaterial2 = new MaterialTypeEntity();
+        typeMaterial2.setName("stone");
+        typeMaterial2.setUnit("M3");
+        typeMaterial2.setCost(new BigDecimal("300"));
+        materialTypeDAO.create(typeMaterial2);
 
 
-        KindMaterialEntity kindMaterial3 = new KindMaterialEntity();
-        kindMaterial3.setName("plaster");
-        kindMaterial3.setUnit("M2");
-        kindMaterial3.setCost(new BigDecimal("500"));
-        kindMaterialDAO.create(kindMaterial3);
+        MaterialTypeEntity typeMaterial3 = new MaterialTypeEntity();
+        typeMaterial3.setName("plaster");
+        typeMaterial3.setUnit("M2");
+        typeMaterial3.setCost(new BigDecimal("500"));
+        materialTypeDAO.create(typeMaterial3);
+
+
+        WorkTypeDao workTypeDao = new WorkTypeDao();
+        WorkTypeEntity workTypeEntity1 = new WorkTypeEntity();
+        workTypeEntity1.setName("work1");
+        workTypeEntity1.setUnit("m2");
+        workTypeEntity1.setCost(new BigDecimal(1000));
+        workTypeDao.create(workTypeEntity1);
+
+        WorkTypeEntity workTypeEntity2 = new WorkTypeEntity();
+        workTypeEntity2.setName("work2");
+        workTypeEntity2.setUnit("m2");
+        workTypeEntity2.setCost(new BigDecimal(2000));
+        workTypeDao.create(workTypeEntity2);
+
+        WorkTypeEntity workTypeEntity3 = new WorkTypeEntity();
+        workTypeEntity3.setName("work3");
+        workTypeEntity3.setUnit("m2");
+        workTypeEntity3.setCost(new BigDecimal(3000));
+        workTypeDao.create(workTypeEntity3);
+
 //
 //        //update
-//        kindMaterial1.setCost(new BigDecimal("5000"));
-//        kindMaterialDAO.update(kindMaterial1);
+//        typeMaterial1.setCost(new BigDecimal("5000"));
+//        materialTypeDAO.update(typeMaterial1);
 //
 //        //delete
-//        kindMaterialDAO.delete(kindMaterial2);
+//        materialTypeDAO.delete(typeMaterial2);
 //
 //        //read
-//        System.out.println("Read by id   " + kindMaterialDAO.read(kindMaterial3.getId()));
+//        System.out.println("Read by id   " + materialTypeDAO.read(typeMaterial3.getId()));
 //
 //        //readByName
-//        System.out.println("Read by name     " + kindMaterialDAO.readByName("plaster"));
+//        System.out.println("Read by name     " + materialTypeDAO.readByName("plaster"));
 //
 //        //readAll
-//        System.out.println("Read All names     " + kindMaterialDAO.getAllNamesKindsMaterial());
+//        System.out.println("Read All names     " + materialTypeDAO.getAllNamesKindsMaterial());
 //
 //
-//        System.out.println("Read All kindsOfMaterials     " + kindMaterialDAO.getAllKindsMaterial());
+//        System.out.println("Read All kindsOfMaterials     " + materialTypeDAO.getAllKindsMaterial());
 
 
 //        OrderDao orderDao = new OrderDao();
 //        OrderEntity order = new OrderEntity();
 //        MaterialEntity materialEntity1 = new MaterialEntity();
-////        kindMaterial1.setId(1l);
-////        materialEntity1.setKindMaterial(kindMaterial1);
+////        typeMaterial1.setId(1l);
+////        materialEntity1.setKindMaterial(typeMaterial1);
 //        materialEntity1.setAmount(100L);
 //        materialEntity1.setOrder(order);
 //        order.getMaterials().add(materialEntity1);
@@ -77,7 +89,7 @@ public class A {
 
 //        MaterialEntity material2  = new MaterialEntity();
 //        material2.setAmount(40l);
-//        material2.setKindMaterial(kindMaterial3);
+//        material2.setKindMaterial(typeMaterial3);
 //        List<MaterialEntity> materialEntityList  = new ArrayList<>();
 //        materialEntityList.add(material2);
 //        System.out.println("!!!!!!!!!!!!!!!" + order.getMaterials().get(0).getKindMaterial().getName() + "and" + order.getMaterials().get(0).getKindMaterial().getName());
@@ -92,29 +104,10 @@ public class A {
 
 
         //create material and bind kind_of_material
-        SessionFactory sessionFactory = MySessionFactory.getSessionFactory();
-
-        MaterialDao materialDao = new MaterialDao();
-
-        MaterialEntity materialEntity1 = new MaterialEntity();
-        materialEntity1.setAmount(50l);
-        kindMaterial1.setId(1l);
-
-        //this option does not work (kind_material = null) !!!!!!!!!!!!!
-
-//        materialDao.create(materialEntity1);
 
 
-        //this option workable !!!!!!!!!!!!!!!!!
 
-//        try(Session session = sessionFactory.getCurrentSession()) {
-//            Transaction transaction = session.beginTransaction();
-//            kindMaterial1 = session.find(KindMaterialEntity.class, 1l);
-//            kindMaterial1.getMaterials().add(materialEntity1);
-//            materialEntity1.setKindMaterial(kindMaterial1);
-//            session.persist(materialEntity1);
-//            transaction.commit();
-//        }
+
 
 
 
@@ -123,51 +116,40 @@ public class A {
         OrderDao orderDao = new OrderDao();
         OrderEntity order = new OrderEntity();
 
+        MaterialEntity materialEntity1 = new MaterialEntity();
+        materialEntity1.setAmount(50l);
+        typeMaterial1.setId(1l);
+
         MaterialEntity materialEntity2 = new MaterialEntity();
         materialEntity2.setAmount(100000L);
 
-        kindMaterial2.setId(2l);
 
-        //here I bind material and order( in future  i get dto and this action
-        // in service)
-
-        materialEntity1.setKindMaterial(kindMaterial1);
-        //kindMaterial1.getMaterials().add(materialEntity1);
-        materialEntity2.setKindMaterial(kindMaterial2);
-        //kindMaterial2.getMaterials().add(materialEntity2);
+        materialEntity1.setKindMaterial(typeMaterial1);
+        materialEntity2.setKindMaterial(typeMaterial2);
 
         order.getMaterials().addAll(List.of(materialEntity1, materialEntity2));
 
 
-//        materialEntity1.setOrder(order);
-//        materialEntity2.setOrder(order);
+        WorkEntity workEntity1 = new WorkEntity();
+        workEntity1.setAmount(1l);
+        workEntity1.setKindWork(workTypeEntity1);
 
-        //attempt with order by cascade (materials were not created) !!!!!!!!!!!!!!!!!!!!!
+        WorkEntity workEntity2 = new WorkEntity();
+        workEntity2.setAmount(2l);
+        workEntity2.setKindWork(workTypeEntity1);
+
+        WorkEntity workEntity3 = new WorkEntity();
+        workEntity3.setAmount(3l);
+        workEntity3.setKindWork(workTypeEntity2);
+
+        order.getWorks().addAll(List.of(workEntity1, workEntity2, workEntity3));
+
+
+
+
 
         orderDao.create(order);
 
-
-
-        //this option workable
-
-//        try (Session session = sessionFactory.getCurrentSession()) {
-//            Transaction transaction = session.beginTransaction();
-//            materialEntity1 = order.getMaterials().get(0);
-//            materialEntity2 = order.getMaterials().get(1);
-//
-//            Long idKindMaterial1 = materialEntity1.getKindMaterial().getId();
-//            Long idKindMaterial2 = materialEntity2.getKindMaterial().getId();
-//
-//            kindMaterial1 = session.find(KindMaterialEntity.class, idKindMaterial1);
-//            kindMaterial2 = session.find(KindMaterialEntity.class, idKindMaterial2);
-//
-//            materialEntity1.setKindMaterial(kindMaterial1);
-//            materialEntity2.setKindMaterial(kindMaterial2);
-//
-//            session.persist(order);
-//
-//            transaction.commit();
- //       }
 
 
 

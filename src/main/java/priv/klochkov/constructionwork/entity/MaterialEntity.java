@@ -3,8 +3,6 @@ package priv.klochkov.constructionwork.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +23,7 @@ public class MaterialEntity {
 
     @ManyToOne()
     @JoinColumn(name = "kind_material id")
-    private KindMaterialEntity kindMaterial;
+    private MaterialTypeEntity kindMaterial;
 
 
 }

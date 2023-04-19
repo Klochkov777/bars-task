@@ -51,15 +51,15 @@
 
         <!-- List of XML mapping files -->
         <!--        <mapping resource = "Employee.hbm.xml"/>-->
-<!--        <mapping class="priv.klochkov.constructionwork.entity.AddressEntity"/>-->
-<!--        <mapping class="priv.klochkov.constructionwork.entity.CustomerEntity"/>-->
-<!--        <mapping class="priv.klochkov.constructionwork.entity.EmailEntity"/>-->
-        <mapping class="priv.klochkov.constructionwork.entity.KindMaterialEntity"/>
-<!--        <mapping class="priv.klochkov.constructionwork.entity.KindWorkEntity"/>-->
-        <mapping class="priv.klochkov.constructionwork.entity.MaterialEntity"/>
         <mapping class="priv.klochkov.constructionwork.entity.OrderEntity"/>
-<!--        <mapping class="priv.klochkov.constructionwork.entity.UserEntity"/>-->
-<!--        <mapping class="priv.klochkov.constructionwork.entity.WorkEntity"/>-->
+        <mapping class="priv.klochkov.constructionwork.entity.MaterialEntity"/>
+        <mapping class="priv.klochkov.constructionwork.entity.MaterialTypeEntity"/>
+        <mapping class="priv.klochkov.constructionwork.entity.WorkEntity"/>
+        <mapping class="priv.klochkov.constructionwork.entity.WorkTypeEntity"/>
+        <!--        <mapping class="priv.klochkov.constructionwork.entity.AddressEntity"/>-->
+        <!--        <mapping class="priv.klochkov.constructionwork.entity.CustomerEntity"/>-->
+        <!--        <mapping class="priv.klochkov.constructionwork.entity.EmailEntity"/>-->
+        <!--        <mapping class="priv.klochkov.constructionwork.entity.UserEntity"/>-->
 
     </session-factory>
 </hibernate-configuration>
