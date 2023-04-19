@@ -31,6 +31,6 @@ public class KindWorkEntity {
     @JoinColumn(name = "cost")
     private BigDecimal cost;
 
-    @OneToMany(mappedBy = "kindWork", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    List<WorkEntity> works = new ArrayList<WorkEntity>();
+//    @OneToMany(mappedBy = "kindWork", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+//    List<WorkEntity> works = new ArrayList<WorkEntity>();
 }

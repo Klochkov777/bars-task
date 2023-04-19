@@ -132,42 +132,42 @@ public class A {
         // in service)
 
         materialEntity1.setKindMaterial(kindMaterial1);
-        kindMaterial1.getMaterials().add(materialEntity1);
+        //kindMaterial1.getMaterials().add(materialEntity1);
         materialEntity2.setKindMaterial(kindMaterial2);
-        kindMaterial2.getMaterials().add(materialEntity2);
+        //kindMaterial2.getMaterials().add(materialEntity2);
 
         order.getMaterials().addAll(List.of(materialEntity1, materialEntity2));
 
 
-        materialEntity1.setOrder(order);
-        materialEntity2.setOrder(order);
+//        materialEntity1.setOrder(order);
+//        materialEntity2.setOrder(order);
 
         //attempt with order by cascade (materials were not created) !!!!!!!!!!!!!!!!!!!!!
 
-//        orderDao.create(order);
+        orderDao.create(order);
 
 
 
         //this option workable
 
-        try (Session session = sessionFactory.getCurrentSession()) {
-            Transaction transaction = session.beginTransaction();
-            materialEntity1 = order.getMaterials().get(0);
-            materialEntity2 = order.getMaterials().get(1);
-
-            Long idKindMaterial1 = materialEntity1.getKindMaterial().getId();
-            Long idKindMaterial2 = materialEntity2.getKindMaterial().getId();
-
-            kindMaterial1 = session.find(KindMaterialEntity.class, idKindMaterial1);
-            kindMaterial2 = session.find(KindMaterialEntity.class, idKindMaterial2);
-
-            materialEntity1.setKindMaterial(kindMaterial1);
-            materialEntity2.setKindMaterial(kindMaterial2);
-
-            session.persist(order);
-
-            transaction.commit();
-        }
+//        try (Session session = sessionFactory.getCurrentSession()) {
+//            Transaction transaction = session.beginTransaction();
+//            materialEntity1 = order.getMaterials().get(0);
+//            materialEntity2 = order.getMaterials().get(1);
+//
+//            Long idKindMaterial1 = materialEntity1.getKindMaterial().getId();
+//            Long idKindMaterial2 = materialEntity2.getKindMaterial().getId();
+//
+//            kindMaterial1 = session.find(KindMaterialEntity.class, idKindMaterial1);
+//            kindMaterial2 = session.find(KindMaterialEntity.class, idKindMaterial2);
+//
+//            materialEntity1.setKindMaterial(kindMaterial1);
+//            materialEntity2.setKindMaterial(kindMaterial2);
+//
+//            session.persist(order);
+//
+//            transaction.commit();
+ //       }
 
 
 

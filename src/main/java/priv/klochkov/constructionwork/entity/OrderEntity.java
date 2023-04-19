@@ -51,6 +51,7 @@ public class OrderEntity {
 //    private List<WorkEntity> works = new ArrayList<WorkEntity>();
 //
 
-    @OneToMany(mappedBy = "order", cascade = {CascadeType.ALL}/*, orphanRemoval = true*/) //!!!!!!!!!!!!!!!!!
+    @OneToMany(cascade = {CascadeType.ALL}) //!!!!!!!!!!!!!!!!!
+    @JoinColumn(name = "order_id")
     private List<MaterialEntity> materials = new ArrayList<>();
 }

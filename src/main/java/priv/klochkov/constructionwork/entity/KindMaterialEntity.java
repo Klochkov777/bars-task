@@ -31,10 +31,8 @@ public class KindMaterialEntity {
     @Column(name = "cost")
     private BigDecimal cost;
 
-    @OneToMany(mappedBy = "kindMaterial", cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = false)
-    private List<MaterialEntity> materials = new ArrayList<>();
+//    @OneToMany(mappedBy = "kindMaterial", cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = false)
+//    private List<MaterialEntity> materials = new ArrayList<>();
 
-    public List<MaterialEntity> getMaterials() {
-        return materials;
-    }
+
 }

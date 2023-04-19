@@ -22,11 +22,8 @@ public class MaterialEntity {
     @Column(name = "amount")
     private Long amount;
 
-    @ManyToOne(cascade = CascadeType.ALL/*{CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}*/)
-    @JoinColumn(name = "order_id")
-    private OrderEntity order;
 
-    @ManyToOne(cascade = CascadeType.ALL/*{CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}*/)
+    @ManyToOne()
     @JoinColumn(name = "kind_material id")
     private KindMaterialEntity kindMaterial;
 
