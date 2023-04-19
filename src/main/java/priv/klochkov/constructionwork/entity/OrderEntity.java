@@ -22,11 +22,11 @@ public class OrderEntity {
     private Long id;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private CustomerEntity customer;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private CustomerEntity customer;
 
-//    @JoinColumn(name = "cost_work")
+//    @Column(name = "cost_work")
 //    private BigDecimal costWork;
 //
 //    @JoinColumn(name = "cost_material")

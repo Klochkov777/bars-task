@@ -1,5 +1,6 @@
 package priv.klochkov.constructionwork;
 
+import priv.klochkov.constructionwork.dao.CustomerDao;
 import priv.klochkov.constructionwork.dao.MaterialTypeDao;
 import priv.klochkov.constructionwork.dao.OrderDao;
 import priv.klochkov.constructionwork.dao.WorkTypeDao;
@@ -53,6 +54,13 @@ public class A {
         workTypeEntity3.setUnit("m2");
         workTypeEntity3.setCost(new BigDecimal(3000));
         workTypeDao.create(workTypeEntity3);
+
+        CustomerDao customerDao = new CustomerDao();
+        CustomerEntity customerEntity1 = new CustomerEntity();
+        customerEntity1.setName("Vladimir");
+        customerEntity1.setSurname("Klochkov");
+        customerEntity1.setNameByFather("Aleksandrovich");
+//        customerEntity1.getNumbersPhone().addAll(List.of("89997772324", "89368889933"));
 
 //
 //        //update
@@ -144,11 +152,18 @@ public class A {
 
         order.getWorks().addAll(List.of(workEntity1, workEntity2, workEntity3));
 
+        order.setCustomer(customerEntity1);
+//        customerEntity1.getOrders().add(order);
+
+        OrderEntity order2 = new OrderEntity();
+        order2.setCustomer(customerEntity1);
+
 
 
 
 
         orderDao.create(order);
+        orderDao.create(order2);
 
 
 
