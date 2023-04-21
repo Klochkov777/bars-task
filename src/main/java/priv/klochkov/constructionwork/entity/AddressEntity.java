@@ -1,22 +1,20 @@
 package priv.klochkov.constructionwork.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter @Setter
 @Builder
-//@Entity
-//@Table(name = "addresses")
+@Entity
+@Table(name = "addresses")
 public class AddressEntity {
 
     @Id
@@ -25,6 +23,9 @@ public class AddressEntity {
 
     @Column(name = "country")
     private String country;
+
+    @Column(name = "town")
+    private String town;
 
     @Column(name = "street")
     private String street;
@@ -35,6 +36,6 @@ public class AddressEntity {
     @Column(name = "number_of_flat")
     private Long numberFlat;
 
-    @OneToMany(mappedBy = "address", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "address")
     List<OrderEntity> orders = new ArrayList<OrderEntity>();
 }

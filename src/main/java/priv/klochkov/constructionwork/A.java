@@ -1,9 +1,6 @@
 package priv.klochkov.constructionwork;
 
-import priv.klochkov.constructionwork.dao.CustomerDao;
-import priv.klochkov.constructionwork.dao.MaterialTypeDao;
-import priv.klochkov.constructionwork.dao.OrderDao;
-import priv.klochkov.constructionwork.dao.WorkTypeDao;
+import priv.klochkov.constructionwork.dao.*;
 import priv.klochkov.constructionwork.entity.*;
 
 import java.math.BigDecimal;
@@ -60,6 +57,30 @@ public class A {
         customerEntity1.setName("Vladimir");
         customerEntity1.setSurname("Klochkov");
         customerEntity1.setNameByFather("Aleksandrovich");
+        customerEntity1.setPassportNumber("657748789");
+
+        CustomerEntity customerEntity2 = new CustomerEntity();
+        customerEntity2.setName("Serg");
+        customerEntity2.setSurname("Ivanov");
+        customerEntity2.setNameByFather("Aleksandrovich");
+        customerEntity2.setPassportNumber("65763");
+
+
+        AddressDao addressDao = new AddressDao();
+        AddressEntity addressEntity1 = new AddressEntity();
+        addressEntity1.setCountry("Russia");
+        addressEntity1.setTown("Odincovo");
+        addressEntity1.setStreet("Skolkovo");
+        addressEntity1.setHouse("5");
+        addressEntity1.setNumberFlat(10l);
+
+        AddressEntity addressEntity2 = new AddressEntity();
+        addressEntity2.setCountry("Usa");
+        addressEntity2.setStreet("wash");
+        addressEntity2.setTown("NEw york");
+        addressEntity2.setHouse("4");
+        addressEntity2.setNumberFlat(22l);
+
 //        customerEntity1.getNumbersPhone().addAll(List.of("89997772324", "89368889933"));
 
 //
@@ -153,10 +174,17 @@ public class A {
         order.getWorks().addAll(List.of(workEntity1, workEntity2, workEntity3));
 
         order.setCustomer(customerEntity1);
-//        customerEntity1.getOrders().add(order);
+        order.setAddress(addressEntity1);
 
         OrderEntity order2 = new OrderEntity();
         order2.setCustomer(customerEntity1);
+        order2.setAddress(addressEntity2);
+
+        OrderEntity order3 = new OrderEntity();
+        order3.setCustomer(customerEntity2);
+        order3.setAddress(addressEntity2);
+
+
 
 
 
@@ -164,6 +192,7 @@ public class A {
 
         orderDao.create(order);
         orderDao.create(order2);
+        orderDao.create(order3);
 
 
 

@@ -1,4 +1,4 @@
 package priv.klochkov.constructionwork.sevice;
 
-public interface KindWorkService {
+public interface AddressService {
 }

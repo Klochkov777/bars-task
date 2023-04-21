@@ -43,9 +43,9 @@ public class OrderEntity {
 //    inverseJoinColumns = @JoinColumn(name = "user_id"))
 //    private List<UserEntity> users = new ArrayList<UserEntity>();
 //
-//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
-//    @JoinColumn(name = "address_id")
-//    private AddressEntity address;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "address_id")
+    private AddressEntity address;
 
     @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true)
     @JoinColumn(name = "order_id")
