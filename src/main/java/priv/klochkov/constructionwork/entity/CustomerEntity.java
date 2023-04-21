@@ -31,8 +31,10 @@ public class CustomerEntity {
     @Column(name = "passport_number")
     private String passportNumber;
 
-//    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private EmailEntity emailEntity;
+//    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "email_id")
+    private EmailEntity emailEntity;
 
 //    @ElementCollection(fetch = FetchType.EAGER)
 //    private List<String> numbersPhone = new ArrayList<>();

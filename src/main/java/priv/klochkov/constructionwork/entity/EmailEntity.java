@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@Entity
-//@Table(name = "emails")
+@Entity
+@Table(name = "emails")
 public class EmailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,13 +20,13 @@ public class EmailEntity {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
-    CustomerEntity customer;
+//    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+//    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+//    CustomerEntity customer;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "user_id")
-    UserEntity user;
+//    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+//    @JoinColumn(name = "user_id")
+//    UserEntity user;
 
 
 }

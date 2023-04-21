@@ -52,18 +52,27 @@ public class A {
         workTypeEntity3.setCost(new BigDecimal(3000));
         workTypeDao.create(workTypeEntity3);
 
+        EmailDao emailDao = new EmailDao();
+        EmailEntity emailEntity1 = new EmailEntity();
+        emailEntity1.setEmail("vova@mail.ru");
+
+        EmailEntity emailEntity2 = new EmailEntity();
+        emailEntity2.setEmail("serg@mail.ru");
+
         CustomerDao customerDao = new CustomerDao();
         CustomerEntity customerEntity1 = new CustomerEntity();
         customerEntity1.setName("Vladimir");
         customerEntity1.setSurname("Klochkov");
         customerEntity1.setNameByFather("Aleksandrovich");
         customerEntity1.setPassportNumber("657748789");
+        customerEntity1.setEmailEntity(emailEntity1);
 
         CustomerEntity customerEntity2 = new CustomerEntity();
         customerEntity2.setName("Serg");
         customerEntity2.setSurname("Ivanov");
         customerEntity2.setNameByFather("Aleksandrovich");
         customerEntity2.setPassportNumber("65763");
+        customerEntity2.setEmailEntity(emailEntity2);
 
 
         AddressDao addressDao = new AddressDao();

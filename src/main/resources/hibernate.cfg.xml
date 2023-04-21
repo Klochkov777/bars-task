@@ -58,7 +58,7 @@
         <mapping class="priv.klochkov.constructionwork.entity.WorkTypeEntity"/>
         <mapping class="priv.klochkov.constructionwork.entity.CustomerEntity"/>
         <mapping class="priv.klochkov.constructionwork.entity.AddressEntity"/>
-        <!--        <mapping class="priv.klochkov.constructionwork.entity.EmailEntity"/>-->
+        <mapping class="priv.klochkov.constructionwork.entity.EmailEntity"/>
         <!--        <mapping class="priv.klochkov.constructionwork.entity.UserEntity"/>-->
 
     </session-factory>
