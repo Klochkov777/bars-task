@@ -59,7 +59,7 @@
         <mapping class="priv.klochkov.constructionwork.entity.CustomerEntity"/>
         <mapping class="priv.klochkov.constructionwork.entity.AddressEntity"/>
         <mapping class="priv.klochkov.constructionwork.entity.EmailEntity"/>
-        <!--        <mapping class="priv.klochkov.constructionwork.entity.UserEntity"/>-->
+        <mapping class="priv.klochkov.constructionwork.entity.ManagerEntity"/>
 
     </session-factory>
 </hibernate-configuration>

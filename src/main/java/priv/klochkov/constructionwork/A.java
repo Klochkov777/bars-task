@@ -66,6 +66,7 @@ public class A {
         customerEntity1.setNameByFather("Aleksandrovich");
         customerEntity1.setPassportNumber("657748789");
         customerEntity1.setEmailEntity(emailEntity1);
+        customerEntity1.getNumbersPhone().addAll(List.of("89093456787", "7864532"));
 
         CustomerEntity customerEntity2 = new CustomerEntity();
         customerEntity2.setName("Serg");
@@ -89,6 +90,16 @@ public class A {
         addressEntity2.setTown("NEw york");
         addressEntity2.setHouse("4");
         addressEntity2.setNumberFlat(22l);
+
+
+        ManagerDao managerDao = new ManagerDao();
+        ManagerEntity managerEntity = new ManagerEntity();
+        managerEntity.setName("Evgeniy");
+        managerEntity.setSurname("Zagrodskiy");
+        managerEntity.setNameViaFather("byDather");
+        EmailEntity email = new EmailEntity();
+        email.setEmail("zag@mail.ru");
+        managerEntity.setEmail(email);
 
 //        customerEntity1.getNumbersPhone().addAll(List.of("89997772324", "89368889933"));
 
@@ -192,6 +203,8 @@ public class A {
         OrderEntity order3 = new OrderEntity();
         order3.setCustomer(customerEntity2);
         order3.setAddress(addressEntity2);
+
+        order.getManagers().add(managerEntity);
 
 
 

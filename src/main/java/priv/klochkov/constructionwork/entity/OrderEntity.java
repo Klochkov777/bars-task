@@ -26,6 +26,7 @@ public class OrderEntity {
     @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
 
+
 //    @Column(name = "cost_work")
 //    private BigDecimal costWork;
 //
@@ -37,12 +38,12 @@ public class OrderEntity {
 
 
 
-//
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-//    @JoinTable(name = "user_order", joinColumns = @JoinColumn(name = "order_id"),
-//    inverseJoinColumns = @JoinColumn(name = "user_id"))
-//    private List<UserEntity> users = new ArrayList<UserEntity>();
-//
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "manager_order", joinColumns = @JoinColumn(name = "order_id"),
+    inverseJoinColumns = @JoinColumn(name = "manager_id"))
+    private List<ManagerEntity> managers = new ArrayList<ManagerEntity>();
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "address_id")
     private AddressEntity address;

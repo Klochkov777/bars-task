@@ -13,9 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//@Entity
-//@Table(name = "users")
-public class UserEntity {
+@Entity
+@Table(name = "users")
+public class ManagerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,13 +29,14 @@ public class UserEntity {
     @Column(name = "surname")
     private String Surname;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "email_id")
     EmailEntity email;
 
-    @Column(name = "surname")
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name = "user_order",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-    List<OrderEntity> orders = new ArrayList<OrderEntity>();
+//    @Column(name = "surname")
+//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+//    @JoinTable(name = "user_order",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "order_id"))
+//    List<OrderEntity> orders = new ArrayList<OrderEntity>();
 }

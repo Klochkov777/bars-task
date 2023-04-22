@@ -36,8 +36,8 @@ public class CustomerEntity {
     @JoinColumn(name = "email_id")
     private EmailEntity emailEntity;
 
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    private List<String> numbersPhone = new ArrayList<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> numbersPhone = new ArrayList<>();
 
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<OrderEntity> orders = new ArrayList<OrderEntity>();
