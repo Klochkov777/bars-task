@@ -5,36 +5,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import priv.klochkov.constructionwork.dao.OrderDao;
 import priv.klochkov.constructionwork.dto.OrderDto;
 import priv.klochkov.constructionwork.entity.OrderEntity;
 import priv.klochkov.constructionwork.sevice.OrderService;
 import priv.klochkov.constructionwork.sevice.impl.OrderServiceImpl;
-import priv.klochkov.constructionwork.sevice.utils.OrderMapper;
+//import priv.klochkov.constructionwork.sevice.utils.OrderMapper;
 
 @Controller
+@ResponseBody
 @RequestMapping("/orders")
 public class OrderController {
-
-
-
-    private OrderServiceImpl orderService;
+    private final OrderServiceImpl orderService;
 
     @Autowired
     public OrderController(OrderServiceImpl orderService) {
         this.orderService = orderService;
     }
 
-//    @GetMapping
-//    @ResponseBody
-//    public String getHello() {
-//        return "hello";
-//    }
-
     @GetMapping("/{id}")
+    @ResponseBody
     public OrderDto getPerson(@PathVariable("id") long id) {
         System.out.println("HELLO!!!!");
         OrderEntity order = orderService.getOrderById(id);
-        return OrderMapper.INSTANCE.orderEntityToOrderDto(order);
+        OrderDto orderDto = new OrderDto(order.getId(), order.getCustomer().getName());
+        return orderDto;
     }
 
 

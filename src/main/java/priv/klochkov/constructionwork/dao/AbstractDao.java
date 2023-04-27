@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import priv.klochkov.constructionwork.sevice.utils.MySessionFactory;
 
+
 public abstract class AbstractDao<T> {
     private final Class<T> clazz;
     private final SessionFactory sessionFactory = MySessionFactory.getSessionFactory();

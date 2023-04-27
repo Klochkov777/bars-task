@@ -8,7 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import priv.klochkov.constructionwork.sevice.utils.OrderMapper;
+//import priv.klochkov.constructionwork.sevice.utils.OrderMapper;
 
 //@SpringBootApplication
 @Configuration
@@ -26,9 +26,9 @@ public class Application extends SpringBootServletInitializer {
     }
 
 
-    @Bean
-    public OrderMapper orderMapper() {
-        return OrderMapper.INSTANCE;
-    }
+//    @Bean
+//    public OrderMapper orderMapper() {
+//        return OrderMapper.INSTANCE;
+//    }
 }
 

@@ -8,14 +8,14 @@ import priv.klochkov.constructionwork.dto.OrderDto;
 import priv.klochkov.constructionwork.entity.OrderEntity;
 
 
-@Mapper
-//@Component
-public interface OrderMapper {
-
-    OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
-
-
-    public OrderDto orderEntityToOrderDto(OrderEntity order);
-    public OrderEntity orderDtoToOrderEntity(OrderDto orderDto);
-}
+//@Mapper
+////@Component
+//public interface OrderMapper {
+//
+//    OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
+//
+//
+//    public OrderDto orderEntityToOrderDto(OrderEntity order);
+//    public OrderEntity orderDtoToOrderEntity(OrderDto orderDto);
+//}
 

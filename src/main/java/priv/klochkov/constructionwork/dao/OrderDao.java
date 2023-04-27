@@ -5,12 +5,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import priv.klochkov.constructionwork.entity.AddressEntity;
 import priv.klochkov.constructionwork.entity.CustomerEntity;
 import priv.klochkov.constructionwork.entity.OrderEntity;
 import priv.klochkov.constructionwork.sevice.utils.MySessionFactory;
 
-@Component
+//@Component
+@Repository
 public class OrderDao extends AbstractDao<OrderEntity> {
 
     public OrderDao() {
