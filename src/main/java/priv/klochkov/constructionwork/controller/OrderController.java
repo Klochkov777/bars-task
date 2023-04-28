@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import priv.klochkov.constructionwork.dao.OrderDao;
 import priv.klochkov.constructionwork.dto.OrderDto;
+import priv.klochkov.constructionwork.dto.OrderDtoForList;
 import priv.klochkov.constructionwork.entity.OrderEntity;
 import priv.klochkov.constructionwork.sevice.OrderService;
 import priv.klochkov.constructionwork.sevice.impl.OrderServiceImpl;
+
+import java.util.List;
 //import priv.klochkov.constructionwork.sevice.utils.OrderMapper;
 
 @Controller
@@ -28,8 +31,14 @@ public class OrderController {
     public OrderDto getPerson(@PathVariable("id") long id) {
         System.out.println("HELLO!!!!");
         OrderEntity order = orderService.getOrderById(id);
-        OrderDto orderDto = new OrderDto(order.getId(), order.getCustomer().getName());
-        return orderDto;
+       // OrderDto orderDto = new OrderDto(order.getId(), order.getCustomer());
+        return null;
+    }
+
+    @GetMapping("/orders")
+    @ResponseBody
+    public List<OrderDtoForList> getOrders() {
+        return orderService.getAllOrders();
     }
 
 

@@ -30,7 +30,7 @@ public class TestController {
     public OrderDto getPerson(@PathVariable("id") long id) {
         System.out.println("HELLO!!!!");
         OrderEntity order = orderService.getOrderById(id);
-        OrderDto orderDto = new OrderDto(order.getId(), order.getCustomer().getName());
-        return orderDto;
+     //   OrderDto orderDto = new OrderDto(order.getId(), order.getCustomer().getName());
+        return null;
     }
 }

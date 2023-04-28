@@ -3,7 +3,11 @@ package priv.klochkov.constructionwork.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import priv.klochkov.constructionwork.sevice.utils.MySessionFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class AbstractDao<T> {
@@ -60,4 +64,21 @@ public abstract class AbstractDao<T> {
             e.getStackTrace();
         }
     }
+
+    public List<T> findAll() {
+        List<T> result = new ArrayList<>();
+        try (Session session = sessionFactory.getCurrentSession()) {
+            Transaction transaction = session.beginTransaction();
+            String entityClassName = clazz.getSimpleName();
+            String queryString = "from " + entityClassName;
+            Query<T> query = session.createQuery(queryString);
+            result = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        return result;
+    }
+
+
 }

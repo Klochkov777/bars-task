@@ -4,6 +4,8 @@ import priv.klochkov.constructionwork.dao.*;
 import priv.klochkov.constructionwork.entity.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 public class A {
@@ -195,14 +197,21 @@ public class A {
 
         order.setCustomer(customerEntity1);
         order.setAddress(addressEntity1);
+        order.setDateStart(LocalDate.of(2022, Month.DECEMBER, 23));
+        order.setDateFinish(LocalDate.of(2022, Month.DECEMBER, 25));
 
         OrderEntity order2 = new OrderEntity();
         order2.setCustomer(customerEntity1);
         order2.setAddress(addressEntity2);
+        order2.setDateStart(LocalDate.of(2023, Month.APRIL, 23));
+        order2.setDateFinish(LocalDate.of(2023, Month.DECEMBER, 25));
 
         OrderEntity order3 = new OrderEntity();
         order3.setCustomer(customerEntity2);
         order3.setAddress(addressEntity2);
+        order3.setDateStart(LocalDate.of(2024, Month.APRIL, 23));
+        order3.setDateFinish(LocalDate.of(2025, Month.DECEMBER, 25));
+
 
         order.getManagers().add(managerEntity);
 

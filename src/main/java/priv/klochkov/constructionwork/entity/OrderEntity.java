@@ -5,6 +5,7 @@ import lombok.*;
 
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,13 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "date_start")
+    LocalDate dateStart;
+
+
+    @Column(name = "date_finish")
+    LocalDate dateFinish;
 
 
     @ManyToOne(cascade = CascadeType.ALL)

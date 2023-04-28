@@ -1,10 +1,16 @@
-//package priv.klochkov.constructionwork;
-//
-//import priv.klochkov.constructionwork.sevice.utils.OrderMapper;
-//
-//public class test {
-//    public static void main(String[] args) {
-//        OrderMapper orderMapper = OrderMapper.INSTANCE;
-//        System.out.println(orderMapper);
-//    }
-//}
+package priv.klochkov.constructionwork;
+
+
+import priv.klochkov.constructionwork.dao.OrderDao;
+import priv.klochkov.constructionwork.entity.OrderEntity;
+
+import java.util.List;
+
+public class test {
+    public static void main(String[] args) {
+        OrderDao orderDao = new OrderDao();
+        List<OrderEntity> list = orderDao.findAll();
+        list.forEach(order -> System.out.println(order.getDateStart() + " " +
+        order.getDateFinish() + " " + order.getCustomer().getName()));
+    }
+}
