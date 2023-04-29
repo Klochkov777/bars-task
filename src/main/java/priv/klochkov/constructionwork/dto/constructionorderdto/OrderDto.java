@@ -1,6 +1,5 @@
 package priv.klochkov.constructionwork.dto.constructionorderdto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,7 @@ public class OrderDto {
     private Long id;
     private LocalDate dateStart;
     private LocalDate dateFinish;
-    private CustomerDto customer;
-    private List<ManagerDto> managers = new ArrayList();
-    private AddressDto address;
+    private CustomerDtoInsideOrder customer;
+    private List<ManagerDtoInsideOrderList> managers = new ArrayList();
+    private AddressDtoInsideOrder address;
 }

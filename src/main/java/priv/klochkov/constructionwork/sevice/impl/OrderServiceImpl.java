@@ -3,9 +3,9 @@ package priv.klochkov.constructionwork.sevice.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priv.klochkov.constructionwork.dao.OrderDao;
-import priv.klochkov.constructionwork.dto.constructionorderdto.AddressDto;
-import priv.klochkov.constructionwork.dto.constructionorderdto.CustomerDto;
-import priv.klochkov.constructionwork.dto.constructionorderdto.ManagerDto;
+import priv.klochkov.constructionwork.dto.constructionorderdto.AddressDtoInsideOrder;
+import priv.klochkov.constructionwork.dto.constructionorderdto.CustomerDtoInsideOrder;
+import priv.klochkov.constructionwork.dto.constructionorderdto.ManagerDtoInsideOrderList;
 import priv.klochkov.constructionwork.dto.constructionorderdto.OrderDto;
 import priv.klochkov.constructionwork.dto.orderdtoforlist.CustomerDtoOrderList;
 import priv.klochkov.constructionwork.dto.orderdtoforlist.OrderDtoList;
@@ -63,14 +63,14 @@ public class OrderServiceImpl implements OrderService {
     private OrderDto orderEntityToOrderDto(OrderEntity orderEntity) {
         CustomerEntity customer = orderEntity.getCustomer();
         AddressEntity address = orderEntity.getAddress();
-        CustomerDto customerDto = customerService.customerToDtoInsideOrder(customer);
-        List<ManagerDto> listManagerDto = managerService.getListManagersDto(orderEntity);
-        AddressDto addressDto = addressService.addressToDtoInsideOrder(address);
+        CustomerDtoInsideOrder customerDto = customerService.customerToDtoInsideOrder(customer);
+        List<ManagerDtoInsideOrderList> listManagerDto = managerService.getListManagersDto(orderEntity);
+        AddressDtoInsideOrder addressDto = addressService.addressToDtoInsideOrder(address);
         return buildOrderDto(orderEntity, customerDto, addressDto, listManagerDto);
     }
 
-    private OrderDto buildOrderDto(OrderEntity order, CustomerDto customerDto, AddressDto addressDto,
-                                   List<ManagerDto> listManagerDto) {
+    private OrderDto buildOrderDto(OrderEntity order, CustomerDtoInsideOrder customerDto, AddressDtoInsideOrder addressDto,
+                                   List<ManagerDtoInsideOrderList> listManagerDto) {
         OrderDto result = new OrderDto();
         result.setId(order.getId());
         result.setDateStart(order.getDateStart());

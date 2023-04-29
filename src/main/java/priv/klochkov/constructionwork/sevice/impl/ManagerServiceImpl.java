@@ -3,7 +3,7 @@ package priv.klochkov.constructionwork.sevice.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priv.klochkov.constructionwork.dao.ManagerDao;
-import priv.klochkov.constructionwork.dto.constructionorderdto.ManagerDto;
+import priv.klochkov.constructionwork.dto.constructionorderdto.ManagerDtoInsideOrderList;
 import priv.klochkov.constructionwork.entity.ManagerEntity;
 import priv.klochkov.constructionwork.entity.OrderEntity;
 
@@ -20,12 +20,12 @@ public class ManagerServiceImpl {
         this.managerDao = managerDao;
     }
 
-    public List<ManagerDto> getListManagersDto(OrderEntity orderEntity) {
-        return orderEntity.getManagers().stream().map(this::managerToDto).collect(Collectors.toList());
+    public List<ManagerDtoInsideOrderList> getListManagersDto(OrderEntity orderEntity) {
+        return orderEntity.getManagers().stream().map(this::managerToDtoInsideOrderList).collect(Collectors.toList());
     }
 
-    public ManagerDto managerToDto(ManagerEntity manager) {
-        ManagerDto result = new ManagerDto();
+    public ManagerDtoInsideOrderList managerToDtoInsideOrderList(ManagerEntity manager) {
+        ManagerDtoInsideOrderList result = new ManagerDtoInsideOrderList();
         result.setId(manager.getId());
         result.setSurname(manager.getSurname());
         result.setNameByFather(manager.getNameViaFather());

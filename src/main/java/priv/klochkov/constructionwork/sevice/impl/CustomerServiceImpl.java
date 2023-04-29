@@ -1,10 +1,9 @@
 package priv.klochkov.constructionwork.sevice.impl;
 
 import org.springframework.stereotype.Service;
-import priv.klochkov.constructionwork.dto.constructionorderdto.CustomerDto;
+import priv.klochkov.constructionwork.dto.constructionorderdto.CustomerDtoInsideOrder;
 import priv.klochkov.constructionwork.dto.orderdtoforlist.CustomerDtoOrderList;
 import priv.klochkov.constructionwork.entity.CustomerEntity;
-import priv.klochkov.constructionwork.entity.OrderEntity;
 
 @Service
 public class CustomerServiceImpl {
@@ -17,8 +16,8 @@ public class CustomerServiceImpl {
         return result;
     }
 
-    public CustomerDto customerToDtoInsideOrder(CustomerEntity customer) {
-        CustomerDto result = new CustomerDto();
+    public CustomerDtoInsideOrder customerToDtoInsideOrder(CustomerEntity customer) {
+        CustomerDtoInsideOrder result = new CustomerDtoInsideOrder();
         result.setId(customer.getId());
         result.setName(customer.getName());
         result.setSurname(customer.getSurname());
