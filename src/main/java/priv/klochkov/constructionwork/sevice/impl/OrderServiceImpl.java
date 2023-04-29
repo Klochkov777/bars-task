@@ -40,10 +40,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public List<OrderDtoList> getAllOrders() {
-       return orderDao.findAll().stream().map(this::orderEntityToOrderDtoForList).collect(Collectors.toList());
+       return orderDao.findAll().stream().map(this::orderToDtoForList).collect(Collectors.toList());
     }
 
-    private OrderDtoList orderEntityToOrderDtoForList(OrderEntity orderEntity) {
+    private OrderDtoList orderToDtoForList(OrderEntity orderEntity) {
         OrderDtoList result = new OrderDtoList();
         CustomerEntity customer = orderEntity.getCustomer();
         CustomerDtoOrderList customerDto = customerService.customerToDtoOrderList(customer);

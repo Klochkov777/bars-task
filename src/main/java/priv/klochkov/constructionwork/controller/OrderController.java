@@ -23,9 +23,15 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    @GetMapping("/hello")
+    public void hello() {
+        System.out.println("HERE!!!!!!!!!!");
+    }
+
     @GetMapping("/{id}")
     @ResponseBody
     public OrderDto getOrder(@PathVariable("id") long id) {
+        System.out.println("HERE!!!!!!!!!!");
         return orderService.getOrderDtoByOrderId(id);
     }
 
