@@ -5,11 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import priv.klochkov.constructionwork.dao.OrderDao;
-import priv.klochkov.constructionwork.dto.OrderDto;
-import priv.klochkov.constructionwork.dto.OrderDtoForList;
-import priv.klochkov.constructionwork.entity.OrderEntity;
-import priv.klochkov.constructionwork.sevice.OrderService;
+import priv.klochkov.constructionwork.dto.constructionorderdto.OrderDto;
+import priv.klochkov.constructionwork.dto.orderdtoforlist.OrderDtoList;
 import priv.klochkov.constructionwork.sevice.impl.OrderServiceImpl;
 
 import java.util.List;
@@ -17,7 +14,7 @@ import java.util.List;
 
 @Controller
 @ResponseBody
-@RequestMapping("/orders")
+@RequestMapping("/order")
 public class OrderController {
     private final OrderServiceImpl orderService;
 
@@ -28,16 +25,15 @@ public class OrderController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public OrderDto getPerson(@PathVariable("id") long id) {
-        System.out.println("HELLO!!!!");
-        OrderEntity order = orderService.getOrderById(id);
-       // OrderDto orderDto = new OrderDto(order.getId(), order.getCustomer());
-        return null;
+    public OrderDto getOrder(@PathVariable("id") long id) {
+        return orderService.getOrderDtoByOrderId(id);
     }
+
+
 
     @GetMapping("/orders")
     @ResponseBody
-    public List<OrderDtoForList> getOrders() {
+    public List<OrderDtoList> getOrders() {
         return orderService.getAllOrders();
     }
 

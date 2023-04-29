@@ -1,4 +1,4 @@
-package priv.klochkov.constructionwork.dto;
+package priv.klochkov.constructionwork.dto.orderdtoforlist;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,10 +11,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-public class OrderDtoForList {
+public class OrderDtoList {
     Long id;
     LocalDate dateStart;
     LocalDate dateFinish;
-    CustomerDtoForListOrder customerDtoForListOrder;
+    CustomerDtoOrderList customerDtoOrderList;
 
 }

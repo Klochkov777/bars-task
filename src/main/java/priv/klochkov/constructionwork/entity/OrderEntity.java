@@ -23,11 +23,11 @@ public class OrderEntity {
     private Long id;
 
     @Column(name = "date_start")
-    LocalDate dateStart;
+    private LocalDate dateStart;
 
 
     @Column(name = "date_finish")
-    LocalDate dateFinish;
+    private LocalDate dateFinish;
 
 
     @ManyToOne(cascade = CascadeType.ALL)
