@@ -39,7 +39,7 @@ public class CustomerEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> numbersPhone = new ArrayList<>();
 
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<OrderEntity> orders = new ArrayList<OrderEntity>();
 
     @Override

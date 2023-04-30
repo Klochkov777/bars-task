@@ -5,22 +5,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import priv.klochkov.constructionwork.dto.CustomerDto;
 import priv.klochkov.constructionwork.dto.constructionorderdto.OrderDto;
 import priv.klochkov.constructionwork.dto.orderdtoforlist.OrderDtoList;
+import priv.klochkov.constructionwork.entity.CustomerEntity;
+import priv.klochkov.constructionwork.entity.OrderEntity;
+import priv.klochkov.constructionwork.sevice.CustomerService;
+import priv.klochkov.constructionwork.sevice.OrderService;
 import priv.klochkov.constructionwork.sevice.impl.OrderServiceImpl;
 
 import java.util.List;
-//import priv.klochkov.constructionwork.sevice.utils.OrderMapper;
+
 
 @Controller
 @ResponseBody
 @RequestMapping("/order")
 public class OrderController {
     private final OrderServiceImpl orderService;
+    //   private final CustomerService customerService;
 
     @Autowired
-    public OrderController(OrderServiceImpl orderService) {
+    public OrderController(OrderServiceImpl orderService/*, CustomerService customerService*/) {
         this.orderService = orderService;
+        /*this.customerService = customerService;*/
     }
 
     @GetMapping("/hello")
@@ -33,6 +40,14 @@ public class OrderController {
     public OrderDto getOrder(@PathVariable("id") long id) {
         System.out.println("HERE!!!!!!!!!!");
         return orderService.getOrderDtoByOrderId(id);
+    }
+
+    @GetMapping("/{id}/customer")
+    @ResponseBody
+    public CustomerDto getCustomer(@PathVariable("id") long id) {
+        OrderEntity order = orderService.getOrderById(id);
+        CustomerEntity customer = order.getCustomer();
+        return orderService.customerService.customerToDto(customer, orderService);
     }
 
 

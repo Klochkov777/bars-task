@@ -1,7 +1,11 @@
 package priv.klochkov.constructionwork.sevice.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import priv.klochkov.constructionwork.dao.AddressDao;
+import priv.klochkov.constructionwork.dao.CustomerDao;
+import priv.klochkov.constructionwork.dao.ManagerDao;
 import priv.klochkov.constructionwork.dao.OrderDao;
 import priv.klochkov.constructionwork.dto.constructionorderdto.AddressDtoInsideOrder;
 import priv.klochkov.constructionwork.dto.constructionorderdto.CustomerDtoInsideOrder;
@@ -12,7 +16,7 @@ import priv.klochkov.constructionwork.dto.orderdtoforlist.OrderDtoList;
 import priv.klochkov.constructionwork.entity.AddressEntity;
 import priv.klochkov.constructionwork.entity.CustomerEntity;
 import priv.klochkov.constructionwork.entity.OrderEntity;
-import priv.klochkov.constructionwork.sevice.OrderService;
+import priv.klochkov.constructionwork.sevice.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,18 +26,22 @@ public class OrderServiceImpl implements OrderService {
 
 
     private final OrderDao orderDao;
-    private final CustomerServiceImpl customerService;
-    private final ManagerServiceImpl managerService;
-    private final AddressServiceImpl addressService;
+    public final CustomerServiceImpl customerService;
+    @Autowired
+    private ManagerService managerService;
+    @Autowired
+    private AddressService addressService;
 
     @Autowired
-    public OrderServiceImpl(OrderDao orderDao, CustomerServiceImpl customerService,
-                            ManagerServiceImpl managerService, AddressServiceImpl addressService) {
+    public OrderServiceImpl(OrderDao orderDao, @Qualifier("customerService") CustomerServiceImpl customerService) {
         this.orderDao = orderDao;
         this.customerService = customerService;
-        this.managerService = managerService;
-        this.addressService = addressService;
     }
+
+    //    public OrderServiceImpl(OrderDao orderDao, CustomerService customerService) {
+//        this.orderDao = orderDao;
+//        this.customerService = customerService;
+//    }
 
     public OrderEntity getOrderById(Long id) {
         return orderDao.read(id);
@@ -43,7 +51,8 @@ public class OrderServiceImpl implements OrderService {
        return orderDao.findAll().stream().map(this::orderToDtoForList).collect(Collectors.toList());
     }
 
-    private OrderDtoList orderToDtoForList(OrderEntity orderEntity) {
+    public OrderDtoList orderToDtoForList(OrderEntity orderEntity) {
+
         OrderDtoList result = new OrderDtoList();
         CustomerEntity customer = orderEntity.getCustomer();
         CustomerDtoOrderList customerDto = customerService.customerToDtoOrderList(customer);
@@ -61,6 +70,9 @@ public class OrderServiceImpl implements OrderService {
 
 
     private OrderDto orderEntityToOrderDto(OrderEntity orderEntity) {
+//        ManagerServiceImpl managerService = new ManagerServiceImpl(new ManagerDao());
+//        CustomerServiceImpl customerService = new CustomerServiceImpl(new CustomerDao());
+//        AddressServiceImpl addressService = new AddressServiceImpl(new AddressDao());
         CustomerEntity customer = orderEntity.getCustomer();
         AddressEntity address = orderEntity.getAddress();
         CustomerDtoInsideOrder customerDto = customerService.customerToDtoInsideOrder(customer);
@@ -88,3 +100,4 @@ public class OrderServiceImpl implements OrderService {
 
 
 }
+

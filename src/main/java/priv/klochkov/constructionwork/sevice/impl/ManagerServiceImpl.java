@@ -6,12 +6,13 @@ import priv.klochkov.constructionwork.dao.ManagerDao;
 import priv.klochkov.constructionwork.dto.constructionorderdto.ManagerDtoInsideOrderList;
 import priv.klochkov.constructionwork.entity.ManagerEntity;
 import priv.klochkov.constructionwork.entity.OrderEntity;
+import priv.klochkov.constructionwork.sevice.ManagerService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ManagerServiceImpl {
+public class ManagerServiceImpl implements ManagerService {
 
     private final ManagerDao managerDao;
 
